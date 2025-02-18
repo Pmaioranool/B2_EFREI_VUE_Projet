@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "name": "Spaghetti Carbonara",
+    "description": "Classic Italian pasta dish with eggs, cheese, pancetta, and pepper.",
+    "price": 12.99
+  },
+  {
+    "id": "2",
+    "name": "Chicken Tikka Masala",
+    "description": "Popular Indian curry dish with marinated chicken in a spiced tomato sauce.",
+    "price": 14.99
+  },
+  {
+    "id": "3",
+    "name": "Sushi Platter",
+    "description": "Assorted sushi rolls with fresh fish, rice, and seaweed.",
+    "price": 19.99
+  },
+  {
+    "id": "4",
+    "name": "Beef Bourguignon",
+    "description": "French stew with beef braised in red wine, mushrooms, and onions.",
+    "price": 18.99
+  },
+  {
+    "id": "5",
+    "name": "Pad Thai",
+    "description": "Stir-fried rice noodle dish with shrimp, tofu, peanuts, and bean sprouts.",
+    "price": 11.99
+  }
+]

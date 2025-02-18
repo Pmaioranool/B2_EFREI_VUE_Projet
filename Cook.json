@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "Name": "Francis",
+    "Nationality": "French"
+  },
+  {
+    "id": "2",
+    "Name": "Giovanni",
+    "Nationality": "Italian"
+  },
+  {
+    "id": "3",
+    "Name": "Maria",
+    "Nationality": "Spanish"
+  },
+  {
+    "id": "4",
+    "Name": "Hans",
+    "Nationality": "German"
+  },
+  {
+    "id": "5",
+    "Name": "Yuki",
+    "Nationality": "Japanese"
+  },
+  {
+    "id": "6",
+    "Name": "Liam",
+    "Nationality": "Irish"
+  },
+  {
+    "id": "7",
+    "Name": "Sofia",
+    "Nationality": "Greek"
+  },
+  {
+    "id": "8",
+    "Name": "Ahmed",
+    "Nationality": "Egyptian"
+  },
+  {
+    "id": "9",
+    "Name": "Carlos",
+    "Nationality": "Mexican"
+  },
+  {
+    "id": "10",
+    "Name": "Aisha",
+    "Nationality": "Moroccan"
+  }
+]

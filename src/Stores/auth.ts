@@ -8,7 +8,7 @@ export const useAuthStore = defineStore('auth', () => {
   const loginError = ref('');
 
   async function login(data: { email: string; password: string; }) {
-      const result = await fetch('/data.json');
+      const result = await fetch('/User.json');
       const users = await result.json();
       const user = users.find((user: any) => user.email == data.email);
       if (!user) {

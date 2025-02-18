@@ -1,26 +1,18 @@
 <template>
   <main>
-    <h1>Bienvenue sur HomeMade</h1>
-    <section>
-      <ArticleComponent v-for="article in articles" :data="article" />
-    </section>
-  </main>
+    <h1 v-if="welcomeMessage">{{ welcomeMessage }}</h1>
+     <h1 v-else >Home Page</h1>
+    </main>
 </template>
-<script setup lang="ts">
-import ArticleComponent from "../components/ArticleComponent.vue";
 
-const articles = [
-  {
-    class: "box",
-    textContent: "article",
-  },
-  {
-    class: "box",
-    textContent: "article",
-  },
-  {
-    class: "box",
-    textContent: "article",
-  },
-];
+<script lang="ts" setup>
+import { useAuthStore } from '../stores/auth.ts';
+import { computed } from 'vue';
+
+const authStore = useAuthStore();
+const welcomeMessage = computed(() => authStore.WelcomeMessage)
 </script>
+
+<style>
+
+</style>

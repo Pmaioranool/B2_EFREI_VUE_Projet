@@ -1,62 +1,93 @@
 <template>
-  <h1>Login page</h1>
-  <main>
-    <section>
-      <form @submit.prevent="submitHandler">
+    <form @submit.prevent="handleSubmit">
         <section>
-          <FieldComponent
+            <FieldComponent
             v-for="field in fields"
             :key="field.id"
             :data="field"
-            v-model="field.vModel"
-          />
+            />
         </section>
+
         <section>
-          <ButtonComponent
+            <ButtonComponent
             v-for="button in buttons"
             :key="button.id"
             :data="button"
-          />
-        </section>
-      </form>
-    </section>
-  </main>
+            
+            />
+            </section>
+    </form>
+    <router-link v-if="isLoginPage" to="/register">Vous n'avez pas de compte ? Inscrivez-vous ! </router-link>
 </template>
-<script setup lang="ts">
-import FieldComponent from "../components/FieldsComponent.vue";
-import ButtonComponent from "../components/ButtonComponent.vue";
-import { reactive, watch, ref } from "vue";
-import { useRouter } from "vue-router";
+
+<script lang="ts" setup>
+import {reactive, computed} from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { useAuthStore } from '../stores/auth';
+import ButtonComponent from '../components/ButtonComponent.vue';
+import FieldComponent from '../components/FieldComponent.vue';
+
+const store = useAuthStore();
 
 const router = useRouter();
 
+const user = reactive({
+  email: '',
+  password: '',
+}) as any;
+
+
+const isLoginPage = computed(() => {return useRoute().path === '/login'})
+
+
+
 const fields = [
-  {
-    id: "username",
-    type: "text",
-    placeholder: "username",
-  },
-  {
-    id: "password",
-    type: "password",
-    placeholder: "Password",
-  },
-];
+{
+    id:"email",
+    type:"email",
+    placeholder: "Entre votre Email",
+},
+{
+    id:"password",
+    type:"password",
+    placeholder:"votre mot de passe",
+}
+]
+
 
 const buttons = [
-  {
-    id: "login",
-    textContent: "Login",
-    type: "submit" as "submit",
-    disabled: false,
-    class: "button is-dark",
-  },
-  {
-    id: "reset",
-    textContent: "Reset",
-    type: "reset" as "reset",
-    disabled: false,
-    class: "button is-danger is-dark",
-  },
-];
-</script>
+{
+    id: "submit-button",
+    type: "submit" as 'submit',
+    textContent: "Se Connecter",
+}
+
+]
+
+const handleSubmit = async (event:any) => {
+    inputHandler(event);
+    await store.login(user);
+    router.push('/')
+
+}
+
+/*
+    "email": "user1@example.com",
+    "password": "Pass@1234"
+*/
+
+
+const inputHandler = (event:any) => {
+    user[event.target.id]  == event.target.value
+}
+
+
+const isFormValid = computed(() =>{
+    
+    return user.username !== '' &&  user.password !=='';
+    
+});
+</script >
+<style>
+
+</style>

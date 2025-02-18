@@ -1,62 +1,65 @@
 <template>
-  <h1>Login page</h1>
-  <main>
-    <section>
-      <form @submit.prevent="submitHandler">
+    <form>
         <section>
-          <FieldComponent
+            <FieldComponent
             v-for="field in fields"
             :key="field.id"
             :data="field"
-            v-model="field.vModel"
-          />
+            />
         </section>
         <section>
-          <ButtonComponent
+            <ButtonComponent
             v-for="button in buttons"
             :key="button.id"
             :data="button"
-          />
+            />
         </section>
-      </form>
-    </section>
-  </main>
+    </form>
+    <router-link v-if="!isLoginPage" to="/login">Vous avez déjà un compte ? Connectez-vous ! </router-link>
 </template>
-<script setup lang="ts">
-import FieldComponent from "../components/FieldsComponent.vue";
-import ButtonComponent from "../components/ButtonComponent.vue";
-import { reactive, watch, ref } from "vue";
-import { useRouter } from "vue-router";
 
-const router = useRouter();
+<script setup lang="ts">
+import FieldComponent from '../components/FieldComponent.vue'
+import ButtonComponent from '../components/ButtonComponent.vue'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+const isLoginPage = computed(() => {return useRoute().path === '/login'})
+
 
 const fields = [
-  {
-    id: "username",
-    type: "text",
-    placeholder: "username",
-  },
-  {
-    id: "password",
-    type: "password",
-    placeholder: "Password",
-  },
-];
+{
+    id:"pseudo",
+    type:"text",
+    placeholder: "Entre votre Pseudo",
+},
+{
+    id:"email",
+    type:"email",
+    placeholder: "Entre votre Email",
+},
+{
+    id:"tel",
+    type:"tel",
+    placeholder: "+33...",
+},
+{
+    id:"mdp",
+    type:"password",
+    placeholder: "Entre votre mot de passe",
+},
+{
+    id:"verifmdp",
+    type:"password",
+    placeholder:"Entrer à nouveau votre mot de passe",
+}
+]
 
 const buttons = [
-  {
-    id: "login",
-    textContent: "Login",
-    type: "submit" as "submit",
-    disabled: false,
-    class: "button is-dark",
-  },
-  {
-    id: "reset",
-    textContent: "Reset",
-    type: "reset" as "reset",
-    disabled: false,
-    class: "button is-danger is-dark",
-  },
-];
+    {
+        id: "submit-button",
+        type: "submit" as 'submit',
+        textContent: "Se Connecter",
+    }
+]
+
 </script>

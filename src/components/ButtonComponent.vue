@@ -1,25 +1,21 @@
 <template>
-  <button
-    :class="data.class"
-    :type="data.type ? data.type : 'button'"
-    :id="String(data.id)"
-    :disabled="data.disabled ? data.disabled : false"
-  >
-    {{ data.textContent }}
-  </button>
+    <button
+        :type="data.type ? data.type : 'button'"
+        :id="String(data.id)"
+    >{{ data.textContent }}
+    </button>
 </template>
+
 <script setup lang="ts">
-interface dataInterface {
-  id: string | number;
-  textContent: string;
-  type: "button" | "submit" | "reset";
-  disabled: boolean;
-  class: string;
-}
+    interface dataInterface{
+        type?:'submit'|'reset'|'button'
+        id:string | number
+        textContent:string
+    }
 
-interface ButtonComponentProps {
-  data: dataInterface;
-}
+    interface buttonComponentProps{
+        data:dataInterface
+    }
+    defineProps<buttonComponentProps>()
 
-defineProps<ButtonComponentProps>();
 </script>

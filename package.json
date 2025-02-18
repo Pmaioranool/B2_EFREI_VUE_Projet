@@ -1,5 +1,5 @@
 {
-  "name": "b2-efrei-vue-projet",
+  "name": "piniavue",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "pinia": "^3.0.1",
+    "pinia": "^3.0.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },

@@ -1,7 +1,13 @@
+<script setup lang="ts">
+import Header from './layouts/HeaderLayout.vue';
+
+</script>
+
 <template>
-  <headerLayout />
+  <Header/>
   <router-view></router-view>
 </template>
-<script setup lang="ts">
-import headerLayout from "./layout/HeaderLayout.vue";
-</script>
+
+<style scoped>
+
+</style>

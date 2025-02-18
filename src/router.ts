@@ -5,12 +5,12 @@ import RegisterPage from './Pages/RegisterPage.vue'
 
 const routes = [
     {
-        path: '/',
-        component: HomePage
+        path : '/',
+        component : HomePage
     },
     {
-        path: '/login',
-        component: LoginPage
+        path : '/login',
+        component : LoginPage
     },
     {
         path: '/register',
@@ -18,9 +18,10 @@ const routes = [
     }
 ]
 
+
 const router = createRouter({
     history: createWebHashHistory(),
-    routes
+    routes,
 })
 
 export default router

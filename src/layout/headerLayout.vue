@@ -1,10 +1,19 @@
 <template>
   <header>
-    <nav class="navbar">
+    <nav class="navbar is-primary">
       <div class="navbar-brand">
         <router-link class="navbar-item" to="/">Home</router-link>
+        <div
+          class="navbar-burger"
+          @click="toggleNavbar"
+          :class="{ 'is-active': isActive }"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
-      <div class="navbar-menu">
+      <div class="navbar-menu" :class="{ 'is-active': isActive }">
         <div class="navbar-start">
           <router-link v-if="!store.isLogin" class="navbar-item" to="/login"
             >Connexion</router-link
@@ -12,10 +21,7 @@
           <router-link v-if="!store.isLogin" class="navbar-item" to="/register"
             >Inscription</router-link
           >
-          <a
-            v-if="store.isLogin"
-            class="navbar-item"
-            v-on:click="handleDeconnexion"
+          <a v-if="store.isLogin" class="navbar-item" @click="handleDeconnexion"
             >Déconnexion</a
           >
         </div>
@@ -25,17 +31,30 @@
 </template>
 
 <script lang="ts" setup>
-import { useRoute, useRouter } from "vue-router";
-import { useAuthStore } from "../Stores/auth.ts";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "../stores/auth.ts";
 
-const route = useRoute();
 const router = useRouter();
 const store = useAuthStore();
+const isActive = ref(false);
 
 const handleDeconnexion = () => {
   store.logout();
   router.push("/");
 };
+
+const toggleNavbar = () => {
+  isActive.value = !isActive.value;
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+.navbar {
+  background-color: #00d1b2;
+  padding: 1rem;
+}
+.navbar-item {
+  color: white;
+}
+</style>

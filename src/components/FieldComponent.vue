@@ -1,21 +1,34 @@
 <template>
-    <div>
-        <label :for="data.type">{{ String(data.id) }}</label>
-        <input :type="data.type" :id="String(data.id)" :placeholder="data.placeholder">
+  <div class="field">
+    <label class="label">{{ data.placeholder }}</label>
+    <div class="control">
+      <input
+        :type="data.type"
+        :id="data.id"
+        :placeholder="data.placeholder"
+        class="input"
+        @input="$emit('input', $event)"
+      />
     </div>
-
+  </div>
 </template>
-<script lang="ts" setup>
 
+<script setup lang="ts">
 interface dataInterface {
-    id: string | number;
-    placeholder : string;
-    type: string;
+  id: string;
+  type: string;
+  placeholder: string;
 }
 
 interface FieldComponentProps {
-    data: dataInterface;
+  data: dataInterface;
 }
 
 defineProps<FieldComponentProps>();
 </script>
+
+<style scoped>
+.field {
+  margin-bottom: 1rem;
+}
+</style>
